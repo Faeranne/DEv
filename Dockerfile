@@ -28,6 +28,8 @@ user root
 
 run apt-get update && apt-get install vim ctags tmux docker.io -y
 
+run pip install fig
+
 user blixa
 env HOME /home/blixa
 
@@ -35,5 +37,10 @@ run mkdir /home/blixa/src
 run mkdir /home/blixa/.ssh
 
 run ssh-keygen -N "" -f /home/blixa/.ssh/idrsa
+
+run curl -o /home/blixa/.git-prompt.sh \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+
+add .bash_include /home/blixa/
 
 entrypoint /bin/bash

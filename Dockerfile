@@ -25,7 +25,7 @@ RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash
 
 user root
 
-run apt-get update && apt-get install vim ctags tmux -y
+run apt-get update && apt-get install vim ctags tmux docker.io -y
 
 user blixa
 env HOME /home/blixa
@@ -34,3 +34,5 @@ run mkdir /home/blixa/src
 run mkdir /home/blixa/.ssh
 
 run ssh-keygen -N "" -f /home/blixa/.ssh/idrsa
+
+entrypoint /bin/bash

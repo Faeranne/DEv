@@ -1,0 +1,1 @@
+docker run --name dev-volume -v /home/blixa/src -it ubuntu /bin/sh

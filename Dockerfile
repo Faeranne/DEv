@@ -3,6 +3,7 @@ from ubuntu
 run apt-get update && apt-get install python-pip git curl wget zip -y
 run pip install hub
 
+# TODO: use the current user's username and userid
 run useradd -m -s /bin/bash -d /home/blixa -u 1000 blixa
 
 workdir /home/blixa

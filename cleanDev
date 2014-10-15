@@ -1,0 +1,2 @@
+docker rm $USER-dev
+docker run --name $USER-dev dev-volume

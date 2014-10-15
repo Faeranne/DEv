@@ -3,26 +3,32 @@ from ubuntu
 run apt-get update && apt-get install python-pip git curl wget zip -y
 run pip install hub
 
-# TODO: use the current user's username and userid
-run useradd -m -s /bin/bash -d /home/blixa -u 1000 blixa
+run useradd -m -s /bin/bash -d /home/dev -u 1000 dev
 
-workdir /home/blixa
+workdir /home/dev
 
-user blixa
+user dev
 
-env HOME /home/blixa
+env HOME /home/dev
 
 run curl -L https://github.com/mrmakeit/dotfiles/tarball/master | tar zx
 run curl -L https://github.com/mrmakeit/vim/tarball/master | tar zx
 
-run mv mrmakeit-dotfiles-* /home/blixa/dotfiles
-run mv mrmakeit-vim-* /home/blixa/.vim
+run mv mrmakeit-dotfiles-* /home/dev/dotfiles
+run mv mrmakeit-vim-* /home/dev/.vim
 
-run /home/blixa/dotfiles/install
-run ln -s /home/blixa/.vim/vimrc /home/blixa/.vimrc
+run /home/dev/dotfiles/install
+run ln -s /home/dev/.vim/vimrc /home/dev/.vimrc
 
-RUN wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.zip && unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip
-RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true --rc-path=/home/blixa/.bashrc --disable-installation-options
+
+env HOME /home/dev
+
+run mkdir /home/dev/.ssh
+run ln -s /home/dev/.persist/src /home/dev/src
+run ln -s /home/dev/.persist/config /home/dev/.config
+
+run curl -o /home/dev/.git-prompt.sh \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
 user root
 
@@ -30,17 +36,10 @@ run apt-get update && apt-get install vim ctags tmux docker.io -y
 
 run pip install fig
 
-user blixa
-env HOME /home/blixa
+run chown dev:dev /home/dev/ -R
 
-run mkdir /home/blixa/src
-run mkdir /home/blixa/.ssh
+user dev
 
-run ssh-keygen -N "" -f /home/blixa/.ssh/idrsa
-
-run curl -o /home/blixa/.git-prompt.sh \
-    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-
-add .bash_include /home/blixa/
+add .bash_include /home/dev/
 
 entrypoint /bin/bash

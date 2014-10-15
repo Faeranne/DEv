@@ -1,1 +1,8 @@
 source ~/.git-prompt.sh
+
+source '/home/dev/.persist/google-cloud-sdk/path.bash.inc'
+source '/home/dev/.persist/google-cloud-sdk/completion.bash.inc'
+
+if [ -f ~/.persist/firsttime ]; then
+	/bin/bash ~/.persist/firsttime
+fi

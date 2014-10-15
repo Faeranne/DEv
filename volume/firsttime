@@ -1,0 +1,13 @@
+if [ -z $HOME ]; then
+	$HOME = /home/$USER
+fi
+
+
+if [ ! -f $HOME/.ssh/id_rsa ]; then
+	mkdir $HOME/.ssh
+	# Create and show the environments ssh key
+	ssh-keygen -N "" -f $HOME/.ssh/id_rsa
+	cat $HOME/.ssh/id_rsa.pub
+fi
+
+rm $BASH_SOURCE

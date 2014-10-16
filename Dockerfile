@@ -11,8 +11,8 @@ user dev
 
 env HOME /home/dev
 
-run curl -L https://github.com/mrmakeit/dotfiles/tarball/master | tar zx
-run curl -L https://github.com/mrmakeit/vim/tarball/master | tar zx
+run curl -L https://github.com/mrmakeit/dotfiles/tarball/f6d1ca8 | tar zx
+run curl -L https://github.com/mrmakeit/vim/tarball/857ca53 | tar zx
 
 run mv mrmakeit-dotfiles-* /home/dev/dotfiles
 run mv mrmakeit-vim-* /home/dev/.vim
@@ -39,6 +39,8 @@ run pip install fig
 run chown dev:dev /home/dev/ -R
 
 user dev
+
+add ./bin/ /home/dev/bin/
 
 add .bash_include /home/dev/
 

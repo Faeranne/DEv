@@ -1,1 +1,1 @@
-docker run --volumes-from $USER-dev -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.ssh:/home/dev/.ssh -it --rm dev
+docker run --volumes-from $USER-dev -v /var/run/docker.sock:/var/run/docker.sock  -v $HOME/.ssh:/home/dev/.ssh -it --rm dev

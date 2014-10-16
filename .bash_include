@@ -6,3 +6,15 @@ source '/home/dev/.persist/google-cloud-sdk/completion.bash.inc'
 if [ -f ~/.persist/firsttime ]; then
 	/bin/bash ~/.persist/firsttime
 fi
+
+if [ -d ~/bin/ ]; then
+	export PATH=$PATH:~/bin/
+fi
+
+if [ -d ~/.persist/bin/ ]; then
+	export PATH=$PATH:~/.persist/bin/
+fi
+
+if [ -f ~/.persist/nvm/nvm.sh ]; then
+	source ~/.persist/nvm/nvm.sh
+fi
